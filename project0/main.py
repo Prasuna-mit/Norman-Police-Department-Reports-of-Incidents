@@ -110,7 +110,8 @@ def main(url):
     populatedb(db, incidents)
 
     # Print Status
-    status(db)
+    Result = status(db)
+    print(Result)
 
 
 if __name__ == '__main__':
