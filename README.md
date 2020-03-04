@@ -1,83 +1,116 @@
-# cs5293p19-project
-Norman police department frequently updates the summary of incidents,arrests and daily case reports. The goal of this project is to extract a pdf document from the [website](http://normanpd.normanok.gov/content/daily-activity), manipulate the data, store it in database and collect nature and the frequency of the incidents from the resultant database. The implementation is done using python on google cloud platform.
-
- by importing libraries and packages like SQLite3, pandas, pypdf2, etc.
- 
 # Norman Police Department Reports of Incidents
 
-Norman police department frequently updates the summary of incidents,arrests and daily case reports. The goal of this project is to extract a pdf document from the [website](http://normanpd.normanok.gov/content/daily-activity), perform analytics on the texr data.
+Norman police department frequently updates the summary of incidents, arrests and daily case reports. The goal of this project is to extract a pdf document from the [website](http://normanpd.normanok.gov/content/daily-activity), perform analytics on the text data to retrieve the nature and the frequency of incidents from the resultant database. The implementation is done using python on google cloud platform.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The information below walks you through the project.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Clone your git reposity to your local machine using ```git clone <url>``` . This project has been done in python 3.8.1 version. So, please make sure to install it using ```pyenv```. Also, create the local environment using ```pipenv``` which will auto generate pipfile and pipfile.lock. Import libraries and packages like SQLite3, pandas, pypdf2, etc.
 
-```
-Give examples
-```
+## Project Descriptions
+Structure of the directory
+.
+├── COLLABORATORS
+├── LICENSE
+├── Pipfile
+├── Pipfile.lock
+├── README.md
+├── docs
+├── normanpd.db
+├── project0
+│   ├── __init__.py
+│   ├── main.py
+│   └── normanpd.db
+├── project0.egg-info
+│   ├── PKG-INFO
+│   ├── SOURCES.txt
+│   ├── dependency_links.txt
+│   └── top_level.txt
+├── setup.cfg
+├── setup.py
+└── tests
+    ├── test_date_times.py
+    └── test_download.py
 
-### Installing
 
-A step by step series of examples that tell you how to get a development env running
+For this project I have created five below methods to perform particular task.
 
-Say what the step will be
+### fetchincidents(url)
+This method takes an URL as an input, opens the url using using urllib.request to read it into a file in the form of bytes. This method returns the extracted data. 
 
-```
-Give the example
-```
+### extractincidents(data)
+This method is used to extract the actual data using PyPDF2.To do so, initially, a temporary file needs to be created to store the input data. This data again passed to PdfFileReader builtin function in the PyPDF2 library. This library is capable of splitting, merging together, cropping, and transforming the pages of PDF files. 
 
-And repeat
+The data now is in string format seperated by newline. Replace the delimiter "\n" with comma using split function. Continue doing this process for all of the available pages using for loop. Perform some text mining on the data as it is having some issues with header inclusion which makes the text unstructured. I have removed the heading that usually is appended at the ending of the first page. The finaly structured dataframe will be returned to the function call.
 
-```
-until finished
-```
+### createdb()
+Create a database using SQLite with the number of columns to store the dataframe. But before that, we need to create a database connection. 
 
-End with an example of getting some data out of the system or using it for a little demo
+**Database Schema:**
 
-## Running the tests
+CREATE TABLE incidents (
+    incident_time TEXT,
+    incident_number TEXT,
+    incident_location TEXT,
+    nature TEXT,
+    incident_ori TEXT
+);
 
-Explain how to run the automated tests for this system
+### populatedb(sqlite3_conn, incidents)
+This method takes two parameters such as database connection link and the table and populate the database. "to_sql" used to write the dataframe into the database. This method is will not return any output. 
 
-### Break down into end to end tests
+### status()
+This method is the final method that takes database connction as an input parameter, executes the query that retrieves only nature and the count of incidents. After that, I have concatenated the columns using pipeline "|" delimiter.
 
-Explain what these tests test and why
+**Output:**
 
-```
-Give an example
-```
+0     Abdominal Pains/Problems|2
+1               Aircraft Crash|2
+2                       Alarm|10
+3           Alarm Holdup/Panic|2
+4               Animal Vicious|2
+                 ...            
+63        Unconscious/Fainting|8
+64    Unknown Problem/Man Down|2
 
-### And coding style tests
+I have called all these methods in the main function with the respective input parameters.
 
-Explain what these tests test and why
+## Test
 
-```
-Give an example
-```
+To check the correctness of the implementation, I have generatied testcases for each methods.
 
-## Deployment
+### Testcase-1 for Fetching
+I have written a condition to check whether the type of fetched file is "bytes" or not.
 
-Add additional notes about how to deploy this on a live system
+### Testcase-2 for extracting
+This testcase checks the number of columns and the value at the specific field of the created dtaframe.
 
-## Built With
+### Testcase-3 for connection
+It checks if the database is connected at all or not.
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+### Testcase-4 for populating
+Since this method populates the database with the values in dataframe, I have created the testcase to check if the number of rows have been stored properly or not.
 
-## Contributing
+### Testcase-5 for checking the status
+This checks if output of the executed query is having the specific values or not.
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
+### Execute the files in terminal
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+To run main.py file
+
+```pipenv run python project0/main.py --incidents <url>```
+
+To run test cases:
+
+```pipenv run python setup.py test```
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Prasuna Mitikiri** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
@@ -85,9 +118,4 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
 
