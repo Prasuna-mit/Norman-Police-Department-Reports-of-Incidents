@@ -20,12 +20,16 @@ def fetchincidents(url):
 
 # Extract Data
 def extractincidents(data):
+    #Creation of a temp file and writing the data in bytes formate into the temp file
     fp = tempfile.TemporaryFile()
     fp.write(data)
     fp.seek(0)
+    #To extract the actual data using pypdf
     pdfReader = PyPDF2.pdf.PdfFileReader(fp)
     pdfReader.getNumPages()
+    #creating columns manually for the extracted data
     dataF = pd.DataFrame(columns=('date/time', 'inc_number', 'inc_location', 'nature', 'incident_ori'))
+    #for loop to do analytics of the text
     for i in range(pdfReader.numPages):
         pages = pdfReader.getPage(i).extractText()
         # pages = Pages.replace('\n',',').split(',')
@@ -49,6 +53,7 @@ def extractincidents(data):
 # Create Dataase
 def createdb():
     # c = conn.cursor()
+    #creating database connection 
     sqlite3_conn = None
     try:
         sqlite3_conn = sqlite3.connect('normanpd.db')
@@ -58,8 +63,9 @@ def createdb():
         print(err)
     if sqlite3_conn is not None:
         sqlite3_conn.close()
-
+    #create a cursor
     c = sqlite3_conn.cursor()
+    #creation of a table
     c.execute('''CREATE TABLE incidents (
     date/time TEXT,
     incident_number TEXT,
@@ -67,6 +73,7 @@ def createdb():
     nature TEXT,
     incident_ori TEXT
     );''')
+    #commit the changes
     sqlite3_conn.commit()
 
 
