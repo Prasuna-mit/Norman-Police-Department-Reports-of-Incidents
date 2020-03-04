@@ -12,6 +12,31 @@ Clone your git reposity to your local machine using ```git clone <url>``` . This
 
 ## Project Descriptions
 
+Directory Structure:
+    .
+    ├── COLLABORATORS
+    ├── LICENSE
+    ├── Pipfile
+    ├── Pipfile.lock
+    ├── README.md
+    ├── docs
+    ├── normanpd.db
+    ├── project0
+    │   ├── __init__.py
+    │   ├── main.py
+    │   └── normanpd.db
+    ├── project0.egg-info
+    │   ├── PKG-INFO
+    │   ├── SOURCES.txt
+    │   ├── dependency_links.txt
+    │   └── top_level.txt
+    ├── setup.cfg
+    ├── setup.py
+    └── tests
+        ├── test_date_times.py
+        └── test_download.py
+
+
 For this project I have created five below methods to perform particular task.
 
 ### fetchincidents(url)
@@ -43,14 +68,14 @@ This method is the final method that takes database connction as an input parame
 
 **Output:**
 
-0     Abdominal Pains/Problems|2
-1               Aircraft Crash|2
-2                       Alarm|10
-3           Alarm Holdup/Panic|2
-4               Animal Vicious|2
-                 ...            
-63        Unconscious/Fainting|8
-64    Unknown Problem/Man Down|2
+    0     Abdominal Pains/Problems|2
+    1               Aircraft Crash|2
+    2                       Alarm|10
+    3           Alarm Holdup/Panic|2
+    4               Animal Vicious|2
+                     ...            
+    63        Unconscious/Fainting|8
+    64    Unknown Problem/Man Down|2
 
 I have called all these methods in the main function with the respective input parameters.
 
