@@ -3,9 +3,9 @@ Norman police department frequently updates the summary of incidents,arrests and
 
  by importing libraries and packages like SQLite3, pandas, pypdf2, etc.
  
- # Project Title
+# Norman Police Department Reports of Incidents
 
-One Paragraph of project description goes here
+Norman police department frequently updates the summary of incidents,arrests and daily case reports. The goal of this project is to extract a pdf document from the [website](http://normanpd.normanok.gov/content/daily-activity), perform analytics on the texr data.
 
 ## Getting Started
 
