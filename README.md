@@ -12,31 +12,6 @@ Clone your git reposity to your local machine using ```git clone <url>``` . This
 
 ## Project Descriptions
 
-Directory Structure:
-    .
-    ├── COLLABORATORS
-    ├── LICENSE
-    ├── Pipfile
-    ├── Pipfile.lock
-    ├── README.md
-    ├── docs
-    ├── normanpd.db
-    ├── project0
-    │   ├── __init__.py
-    │   ├── main.py
-    │   └── normanpd.db
-    ├── project0.egg-info
-    │   ├── PKG-INFO
-    │   ├── SOURCES.txt
-    │   ├── dependency_links.txt
-    │   └── top_level.txt
-    ├── setup.cfg
-    ├── setup.py
-    └── tests
-        ├── test_date_times.py
-        └── test_download.py
-
-
 For this project I have created five below methods to perform particular task.
 
 ### fetchincidents(url)
@@ -111,12 +86,6 @@ To run test cases:
 
 ## Authors
 
-* **Prasuna Mitikiri** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+* **Prasuna Mitikiri** - prasuna.mitikiri@ou.edu
 
 
