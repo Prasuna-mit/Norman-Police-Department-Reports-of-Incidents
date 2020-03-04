@@ -27,13 +27,13 @@ Create a database using SQLite with the number of columns to store the dataframe
 
 **Database Schema:**
 
-CREATE TABLE incidents (
-    incident_time TEXT,
-    incident_number TEXT,
-    incident_location TEXT,
-    nature TEXT,
-    incident_ori TEXT
-);
+    CREATE TABLE incidents (
+        incident_time TEXT,
+        incident_number TEXT,
+        incident_location TEXT,
+        nature TEXT,
+        incident_ori TEXT
+    );
 
 ### populatedb(sqlite3_conn, incidents)
 This method takes two parameters such as database connection link and the table and populate the database. "to_sql" used to write the dataframe into the database. This method is will not return any output. 
