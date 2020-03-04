@@ -92,8 +92,8 @@ def status(db):
     results = pd.read_sql_query("select nature, count(*) as count from incidents group by nature", db)
     #results= results["nature"] + results["Count(*)"]
     results["period"] = results["nature"] + "|" + results["count"].astype(str)
-    #return results["period"]
-    print(results)
+    return results["period"]
+    #print(results)
 
 
 def main(url):
