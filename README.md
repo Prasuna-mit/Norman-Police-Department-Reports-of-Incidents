@@ -11,30 +11,6 @@ The information below walks you through the project.
 Clone your git reposity to your local machine using ```git clone <url>``` . This project has been done in python 3.8.1 version. So, please make sure to install it using ```pyenv```. Also, create the local environment using ```pipenv``` which will auto generate pipfile and pipfile.lock. Import libraries and packages like SQLite3, pandas, pypdf2, etc.
 
 ## Project Descriptions
-Structure of the directory
-            .
-            ├── COLLABORATORS
-            ├── LICENSE
-            ├── Pipfile
-            ├── Pipfile.lock
-            ├── README.md
-            ├── docs
-            ├── normanpd.db
-            ├── project0
-            │   ├── __init__.py
-            │   ├── main.py
-            │   └── normanpd.db
-            ├── project0.egg-info
-            │   ├── PKG-INFO
-            │   ├── SOURCES.txt
-            │   ├── dependency_links.txt
-            │   └── top_level.txt
-            ├── setup.cfg
-            ├── setup.py
-            └── tests
-                ├── test_date_times.py
-                └── test_download.py
-
 
 For this project I have created five below methods to perform particular task.
 
