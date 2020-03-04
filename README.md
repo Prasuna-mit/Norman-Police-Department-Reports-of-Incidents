@@ -12,28 +12,28 @@ Clone your git reposity to your local machine using ```git clone <url>``` . This
 
 ## Project Descriptions
 Structure of the directory
-.
-├── COLLABORATORS
-├── LICENSE
-├── Pipfile
-├── Pipfile.lock
-├── README.md
-├── docs
-├── normanpd.db
-├── project0
-│   ├── __init__.py
-│   ├── main.py
-│   └── normanpd.db
-├── project0.egg-info
-│   ├── PKG-INFO
-│   ├── SOURCES.txt
-│   ├── dependency_links.txt
-│   └── top_level.txt
-├── setup.cfg
-├── setup.py
-└── tests
-    ├── test_date_times.py
-    └── test_download.py
+            .
+            ├── COLLABORATORS
+            ├── LICENSE
+            ├── Pipfile
+            ├── Pipfile.lock
+            ├── README.md
+            ├── docs
+            ├── normanpd.db
+            ├── project0
+            │   ├── __init__.py
+            │   ├── main.py
+            │   └── normanpd.db
+            ├── project0.egg-info
+            │   ├── PKG-INFO
+            │   ├── SOURCES.txt
+            │   ├── dependency_links.txt
+            │   └── top_level.txt
+            ├── setup.cfg
+            ├── setup.py
+            └── tests
+                ├── test_date_times.py
+                └── test_download.py
 
 
 For this project I have created five below methods to perform particular task.
