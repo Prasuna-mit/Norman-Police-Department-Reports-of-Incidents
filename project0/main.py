@@ -1,3 +1,4 @@
+#importing files
 import tempfile
 import urllib
 import PyPDF2
@@ -10,7 +11,7 @@ from sqlite3 import Error
 
 # import project0
 
-# Download data
+# Download the data
 def fetchincidents(url):
     # url = "http://normanpd.normanok.gov/filebrowser_download/657/2020-02-28%20Daily%20Incident%20Summary.pdf"
     data = urllib.request.urlopen(url).read()
@@ -91,8 +92,8 @@ def status(db):
     results = pd.read_sql_query("select nature, count(*) as count from incidents group by nature", db)
     #results= results["nature"] + results["Count(*)"]
     results["period"] = results["nature"] + "|" + results["count"].astype(str)
-    return results["period"]
-    #print(type(results))
+    #return results["period"]
+    print(results)
 
 
 def main(url):
